@@ -2,6 +2,7 @@ package ru.bupyc9.demotv.ui
 
 import android.graphics.Color
 import android.support.v17.leanback.widget.Presenter
+import android.support.v4.content.ContextCompat
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.TextView
@@ -16,7 +17,7 @@ class GridItemPresenter: Presenter() {
         view.layoutParams = ViewGroup.LayoutParams(GRID_ITEM_WIDTH, GRID_ITEM_HEIGHT)
         view.isFocusable = true
         view.isFocusableInTouchMode = true
-        view.setBackgroundColor(parent.resources.getColor(R.color.default_background))
+        view.setBackgroundColor(ContextCompat.getColor(parent.context, R.color.default_background))
         view.setTextColor(Color.WHITE)
         view.gravity = Gravity.CENTER
 

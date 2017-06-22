@@ -8,6 +8,7 @@ import android.support.v17.leanback.widget.ListRow
 import android.support.v17.leanback.widget.ListRowPresenter
 import android.util.Log
 import ru.bupyc9.demotv.R
+import ru.bupyc9.demotv.model.Movie
 
 
 class MainFragment: BrowseFragment() {
@@ -34,14 +35,35 @@ class MainFragment: BrowseFragment() {
 
     private fun loadRows() {
         mRowsAdapter = ArrayObjectAdapter(ListRowPresenter())
+
+        initGridItemPresenter()
+        initCardPresenter()
+
+        adapter = mRowsAdapter
+    }
+
+    private fun initGridItemPresenter() {
         val gridItemPresenterHeader = HeaderItem(0, "GridItemPresenter")
         val gridPresenter = GridItemPresenter()
         val gridRowAdapter = ArrayObjectAdapter(gridPresenter)
+
         gridRowAdapter.add("ITEM 1")
         gridRowAdapter.add("ITEM 2")
         gridRowAdapter.add("ITEM 3")
-        mRowsAdapter.add(ListRow(gridItemPresenterHeader, gridRowAdapter))
 
-        adapter = mRowsAdapter
+        mRowsAdapter.add(ListRow(gridItemPresenterHeader, gridRowAdapter))
+    }
+
+    private fun initCardPresenter() {
+        val cardPresenterHeader = HeaderItem(1, "CardPresenter")
+        val cardPresenter = CardPresenter()
+        val cardRowAdapter = ArrayObjectAdapter(cardPresenter)
+
+        for (i in 0..9) {
+            val movie = Movie(i, "title $i", "studio $i")
+            cardRowAdapter.add(movie)
+        }
+
+        mRowsAdapter.add(ListRow(cardPresenterHeader, cardRowAdapter))
     }
 }
