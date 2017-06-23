@@ -2,12 +2,10 @@ package ru.bupyc9.demotv.ui
 
 import android.os.Bundle
 import android.support.v17.leanback.app.BrowseFragment
-import android.support.v17.leanback.widget.ArrayObjectAdapter
-import android.support.v17.leanback.widget.HeaderItem
-import android.support.v17.leanback.widget.ListRow
-import android.support.v17.leanback.widget.ListRowPresenter
+import android.support.v17.leanback.widget.*
 import android.util.Log
 import ru.bupyc9.demotv.R
+import ru.bupyc9.demotv.SimpleBackgroundManager
 import ru.bupyc9.demotv.model.Movie
 import ru.bupyc9.demotv.presenter.CardPresenter
 import ru.bupyc9.demotv.presenter.GridItemPresenter
@@ -17,6 +15,7 @@ class MainFragment: BrowseFragment() {
     private val TAG: String = MainFragment::class.java.simpleName
 
     private lateinit var mRowsAdapter: ArrayObjectAdapter
+    private lateinit var mSimpleBackgroundManager: SimpleBackgroundManager
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -25,6 +24,9 @@ class MainFragment: BrowseFragment() {
 
         setUIElements()
         loadRows()
+        setupEventListeners()
+
+        mSimpleBackgroundManager = SimpleBackgroundManager(activity)
     }
 
     private fun setUIElements() {
@@ -72,5 +74,20 @@ class MainFragment: BrowseFragment() {
         }
 
         mRowsAdapter.add(ListRow(cardPresenterHeader, cardRowAdapter))
+    }
+
+    private fun setupEventListeners() {
+        onItemViewSelectedListener = ItemViewSelectedListener()
+    }
+
+    private inner class ItemViewSelectedListener: OnItemViewSelectedListener {
+        override fun onItemSelected(itemViewHolder: Presenter.ViewHolder?, item: Any?,
+                                    rowViewHolder: RowPresenter.ViewHolder?, row: Row?) {
+            if (item is String) {
+                mSimpleBackgroundManager.clearBackground()
+            } else if (item is Movie) {
+                mSimpleBackgroundManager.updateBackground(activity.getDrawable(R.drawable.movie_background))
+            }
+        }
     }
 }
