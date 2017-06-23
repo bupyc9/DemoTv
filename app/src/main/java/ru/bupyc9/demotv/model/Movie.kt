@@ -1,4 +1,14 @@
 package ru.bupyc9.demotv.model
 
-data class Movie(val id:Int, val title: String, val studio: String) {
+import java.net.URI
+import java.net.URISyntaxException
+
+data class Movie(val id: Int, val title: String, val studio: String, val imageUrl: String) {
+    fun getImageURI(): URI? {
+        try {
+            return URI(imageUrl)
+        } catch (e: URISyntaxException) {
+            return null
+        }
+    }
 }

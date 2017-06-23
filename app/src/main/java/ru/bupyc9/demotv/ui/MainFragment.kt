@@ -59,8 +59,13 @@ class MainFragment: BrowseFragment() {
         val cardPresenter = CardPresenter()
         val cardRowAdapter = ArrayObjectAdapter(cardPresenter)
 
-        for (i in 0..9) {
-            val movie = Movie(i, "title $i", "studio $i")
+        for (i in 1..10) {
+            val movie = Movie(
+                    i,
+                    "title $i",
+                    "studio $i",
+                    "http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg"
+            )
             cardRowAdapter.add(movie)
         }
 
