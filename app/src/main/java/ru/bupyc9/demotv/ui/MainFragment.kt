@@ -9,6 +9,8 @@ import android.support.v17.leanback.widget.ListRowPresenter
 import android.util.Log
 import ru.bupyc9.demotv.R
 import ru.bupyc9.demotv.model.Movie
+import ru.bupyc9.demotv.presenter.CardPresenter
+import ru.bupyc9.demotv.presenter.GridItemPresenter
 
 
 class MainFragment: BrowseFragment() {

@@ -1,4 +1,4 @@
-package ru.bupyc9.demotv.ui
+package ru.bupyc9.demotv.presenter
 
 import android.graphics.Color
 import android.support.v17.leanback.widget.Presenter
