@@ -9,7 +9,8 @@ data class Movie(
         val id: Int,
         val title: String,
         val studio: String,
-        val imageUrl: String
+        val imageUrl: String,
+        val description: String
 ) : Parcelable {
     fun getImageURI(): URI? {
         try {
@@ -30,6 +31,7 @@ data class Movie(
             source.readInt(),
             source.readString(),
             source.readString(),
+            source.readString(),
             source.readString()
     )
 
@@ -40,5 +42,6 @@ data class Movie(
         dest.writeString(title)
         dest.writeString(studio)
         dest.writeString(imageUrl)
+        dest.writeString(description)
     }
 }

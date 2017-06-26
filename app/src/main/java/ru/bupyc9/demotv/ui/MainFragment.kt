@@ -1,9 +1,11 @@
 package ru.bupyc9.demotv.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.widget.*
 import android.util.Log
+import ru.bupyc9.demotv.DetailsActivity
 import ru.bupyc9.demotv.R
 import ru.bupyc9.demotv.SimpleBackgroundManager
 import ru.bupyc9.demotv.model.Movie
@@ -68,7 +70,9 @@ class MainFragment: BrowseFragment() {
                     i,
                     "title $i",
                     "studio $i",
-                    "http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg"
+                    "http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg",
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim felis, accumsan eget eros auctor, condimentum commodo arcu. Etiam vel quam ac urna ullamcorper molestie sit amet eget ex. Maecenas tincidunt scelerisque ultrices. Vestibulum odio sem, euismod eu lectus nec, congue mollis mi. Fusce vitae gravida lectus, eget vehicula est. Vivamus tempus vitae dui ac dapibus. Nulla bibendum eleifend ultrices. Morbi efficitur tellus nisi, a congue magna molestie quis. Mauris ornare justo sapien, vitae sodales sem pulvinar ut. Aliquam ut pharetra justo. Quisque sit amet tortor vel massa mollis euismod et et sem. Cras facilisis nibh libero, non eleifend justo venenatis vel. Etiam tempus sem lacus, a sodales ante congue ac. Mauris ut dolor sit amet nibh aliquet dapibus. Praesent et tellus at libero commodo efficitur."
+
             )
             cardRowAdapter.add(movie)
         }
@@ -78,6 +82,7 @@ class MainFragment: BrowseFragment() {
 
     private fun setupEventListeners() {
         onItemViewSelectedListener = ItemViewSelectedListener()
+        onItemViewClickedListener = ItemViewClickedListener()
     }
 
     private inner class ItemViewSelectedListener: OnItemViewSelectedListener {
@@ -87,6 +92,19 @@ class MainFragment: BrowseFragment() {
                 mSimpleBackgroundManager.clearBackground()
             } else if (item is Movie) {
                 mSimpleBackgroundManager.updateBackground(activity.getDrawable(R.drawable.movie_background))
+            }
+        }
+    }
+
+    private inner class ItemViewClickedListener: OnItemViewClickedListener {
+        override fun onItemClicked(itemViewHolder: Presenter.ViewHolder?, item: Any?,
+                                   rowViewHolder: RowPresenter.ViewHolder?, row: Row?) {
+            if (item is Movie) {
+                Log.d(TAG, "Item $item")
+
+                val intent = VideoDetailsFragment.newIntent(activity, item)
+
+                activity.startActivity(intent)
             }
         }
     }
