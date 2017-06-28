@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.widget.*
 import android.util.Log
-import ru.bupyc9.demotv.DetailsActivity
+import ru.bupyc9.demotv.ErrorActivity
 import ru.bupyc9.demotv.R
 import ru.bupyc9.demotv.SimpleBackgroundManager
 import ru.bupyc9.demotv.model.Movie
@@ -56,6 +56,7 @@ class MainFragment: BrowseFragment() {
         gridRowAdapter.add("ITEM 1")
         gridRowAdapter.add("ITEM 2")
         gridRowAdapter.add("ITEM 3")
+        gridRowAdapter.add("ErrorMessage")
 
         mRowsAdapter.add(ListRow(gridItemPresenterHeader, gridRowAdapter))
     }
@@ -105,6 +106,11 @@ class MainFragment: BrowseFragment() {
                 val intent = VideoDetailsFragment.newIntent(activity, item)
 
                 activity.startActivity(intent)
+            } else if (item is String) {
+                if (item == "ErrorMessage") {
+                    val intent = Intent(activity, ErrorActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
