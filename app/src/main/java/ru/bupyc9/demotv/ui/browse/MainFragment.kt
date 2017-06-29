@@ -1,16 +1,17 @@
-package ru.bupyc9.demotv.ui
+package ru.bupyc9.demotv.ui.browse
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.widget.*
 import android.util.Log
-import ru.bupyc9.demotv.ErrorActivity
+import ru.bupyc9.demotv.ui.error.ErrorActivity
 import ru.bupyc9.demotv.R
 import ru.bupyc9.demotv.SimpleBackgroundManager
 import ru.bupyc9.demotv.model.Movie
 import ru.bupyc9.demotv.presenter.CardPresenter
 import ru.bupyc9.demotv.presenter.GridItemPresenter
+import ru.bupyc9.demotv.ui.detail.VideoDetailsFragment
 
 
 class MainFragment: BrowseFragment() {

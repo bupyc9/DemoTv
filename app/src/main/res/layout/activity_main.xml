@@ -5,7 +5,7 @@
              android:layout_height="match_parent">
 
     <fragment
-        android:name="ru.bupyc9.demotv.ui.MainFragment"
+        android:name="ru.bupyc9.demotv.ui.browse.MainFragment"
         android:id="@+id/main_browse_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

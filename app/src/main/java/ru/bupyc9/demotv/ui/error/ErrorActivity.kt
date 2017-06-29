@@ -1,8 +1,8 @@
-package ru.bupyc9.demotv
+package ru.bupyc9.demotv.ui.error
 
 import android.app.Activity
 import android.os.Bundle
-import ru.bupyc9.demotv.ui.ErrorFragment
+import ru.bupyc9.demotv.R
 
 class ErrorActivity: Activity() {
     companion object {

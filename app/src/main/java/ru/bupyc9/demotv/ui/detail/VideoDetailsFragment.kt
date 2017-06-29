@@ -1,4 +1,4 @@
-package ru.bupyc9.demotv.ui
+package ru.bupyc9.demotv.ui.detail
 
 import android.content.Context
 import android.content.Intent
@@ -9,7 +9,6 @@ import android.util.Log
 import ru.bupyc9.demotv.model.Movie
 import com.squareup.picasso.Picasso
 import android.support.v17.leanback.widget.*
-import ru.bupyc9.demotv.DetailsActivity
 import ru.bupyc9.demotv.PicassoBackgroundManager
 import ru.bupyc9.demotv.convertDpToPixel
 import java.io.IOException

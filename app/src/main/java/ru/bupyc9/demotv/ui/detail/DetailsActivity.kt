@@ -1,8 +1,8 @@
-package ru.bupyc9.demotv
+package ru.bupyc9.demotv.ui.detail
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.v4.app.FragmentActivity
+import ru.bupyc9.demotv.R
 
 class DetailsActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
