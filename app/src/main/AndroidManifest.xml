@@ -29,6 +29,8 @@
         </activity>
         <activity android:name=".ui.error.ErrorActivity">
         </activity>
+        <activity android:name=".ui.playback.PlaybackActivity">
+        </activity>
     </application>
 
 </manifest>

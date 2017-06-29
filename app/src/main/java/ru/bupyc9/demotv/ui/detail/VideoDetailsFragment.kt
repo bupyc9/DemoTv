@@ -5,16 +5,17 @@ import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import android.support.v17.leanback.app.DetailsFragment
-import android.util.Log
-import ru.bupyc9.demotv.model.Movie
-import com.squareup.picasso.Picasso
 import android.support.v17.leanback.widget.*
+import android.util.Log
+import com.squareup.picasso.Picasso
 import ru.bupyc9.demotv.PicassoBackgroundManager
 import ru.bupyc9.demotv.convertDpToPixel
-import java.io.IOException
+import ru.bupyc9.demotv.model.Movie
 import ru.bupyc9.demotv.presenter.CardPresenter
 import ru.bupyc9.demotv.presenter.CustomFullWidthDetailsOverviewRowPresenter
 import ru.bupyc9.demotv.presenter.DetailsDescriptionPresenter
+import ru.bupyc9.demotv.ui.playback.PlaybackFragment
+import java.io.IOException
 
 
 class VideoDetailsFragment: DetailsFragment() {
@@ -23,6 +24,7 @@ class VideoDetailsFragment: DetailsFragment() {
         @JvmStatic private val DETAIL_THUMB_HEIGHT = 274
         @JvmStatic private val TAG = VideoDetailsFragment::class.java.simpleName
         @JvmStatic private val MOVIE = "movie"
+        @JvmStatic private val ACTION_PLAY_VIDEO = 1L
 
         @JvmStatic fun newIntent(context: Context, movie: Movie): Intent {
             val intent = Intent(context, DetailsActivity::class.java)
@@ -79,10 +81,18 @@ class VideoDetailsFragment: DetailsFragment() {
 
         override fun onPostExecute(row: DetailsOverviewRow) {
             val sparseArrayObjectAdapter = SparseArrayObjectAdapter()
-            for (i in 0..2) {
-                sparseArrayObjectAdapter.set(i, Action(i.toLong(), "label1", "label2"))
-            }
+            sparseArrayObjectAdapter.set(0, Action(ACTION_PLAY_VIDEO, "Play video"))
+            sparseArrayObjectAdapter.set(1, Action(1, "Action 2", "label"))
+            sparseArrayObjectAdapter.set(2, Action(1, "Action 3", "label"))
+
             row.actionsAdapter = sparseArrayObjectAdapter
+
+            mFwdorPresenter.setOnActionClickedListener { action ->
+                if (action.id == ACTION_PLAY_VIDEO) {
+                    val intent = PlaybackFragment.newIntent(activity, mSelectedMovie)
+                    startActivity(intent)
+                }
+            }
 
             /* 2nd row: ListRow */
             val listRowAdapter = ArrayObjectAdapter(CardPresenter())
