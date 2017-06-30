@@ -6,11 +6,12 @@ import java.net.URI
 import java.net.URISyntaxException
 
 data class Movie(
-        val id: Int,
-        val title: String,
-        val studio: String,
-        val imageUrl: String,
-        val description: String
+        var id: Int,
+        var title: String,
+        var studio: String,
+        var imageUrl: String,
+        var description: String,
+        var videoUrl: String
 ) : Parcelable {
     fun getImageURI(): URI? {
         try {
@@ -32,6 +33,7 @@ data class Movie(
             source.readString(),
             source.readString(),
             source.readString(),
+            source.readString(),
             source.readString()
     )
 
@@ -43,5 +45,6 @@ data class Movie(
         dest.writeString(studio)
         dest.writeString(imageUrl)
         dest.writeString(description)
+        dest.writeString(videoUrl)
     }
 }

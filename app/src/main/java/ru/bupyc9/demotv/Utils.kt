@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Point
 import android.view.WindowManager
 import android.widget.Toast
+import android.media.MediaMetadataRetriever
 
 fun getDisplaySize(context: Context): Point {
     val windowManager = context.getSystemService(Context.WINDOW_SERVICE) as WindowManager
@@ -21,7 +22,7 @@ fun showToast(context: Context, message: String) {
 fun convertDpToPixel(context: Context, dp: Int): Int {
     val density = context.resources.displayMetrics.density
 
-    return  Math.round(dp * density)
+    return Math.round(dp * density)
 }
 
 fun formatMillis(millis: Int): String {
@@ -49,4 +50,11 @@ fun formatMillis(millis: Int): String {
     }
 
     return result
+}
+
+fun getDuration(videoUrl: String): Long {
+    val mediaMetadataRetriever = MediaMetadataRetriever()
+    mediaMetadataRetriever.setDataSource(videoUrl, hashMapOf())
+
+    return mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION).toLong()
 }
