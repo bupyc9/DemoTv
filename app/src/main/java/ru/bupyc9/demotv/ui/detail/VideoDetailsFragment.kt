@@ -83,8 +83,8 @@ class VideoDetailsFragment: DetailsFragment() {
         override fun onPostExecute(row: DetailsOverviewRow) {
             val sparseArrayObjectAdapter = SparseArrayObjectAdapter()
             sparseArrayObjectAdapter.set(0, Action(ACTION_PLAY_VIDEO, "Play video"))
-            sparseArrayObjectAdapter.set(1, Action(1, "Action 2", "label"))
-            sparseArrayObjectAdapter.set(2, Action(1, "Action 3", "label"))
+            sparseArrayObjectAdapter.set(1, Action(2, "Action 2", "label"))
+            sparseArrayObjectAdapter.set(2, Action(3, "Action 3", "label"))
 
             row.actionsAdapter = sparseArrayObjectAdapter
 
