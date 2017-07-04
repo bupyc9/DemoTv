@@ -8,6 +8,7 @@ import android.support.v17.leanback.app.DetailsFragment
 import android.support.v17.leanback.widget.*
 import android.util.Log
 import com.squareup.picasso.Picasso
+import ru.bupyc9.demotv.MovieProvider
 import ru.bupyc9.demotv.PicassoBackgroundManager
 import ru.bupyc9.demotv.convertDpToPixel
 import ru.bupyc9.demotv.model.Movie
@@ -96,18 +97,7 @@ class VideoDetailsFragment: DetailsFragment() {
 
             /* 2nd row: ListRow */
             val listRowAdapter = ArrayObjectAdapter(CardPresenter())
-            for (i in 0..9) {
-                val movie = Movie(
-                        i,
-                        "title $i",
-                        "studio $i",
-                        "http://heimkehrend.raindrop.jp/kl-hacker/wp-content/uploads/2014/08/DSC02580.jpg",
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim felis, accumsan eget eros auctor, condimentum commodo arcu. Etiam vel quam ac urna ullamcorper molestie sit amet eget ex. Maecenas tincidunt scelerisque ultrices. Vestibulum odio sem, euismod eu lectus nec, congue mollis mi. Fusce vitae gravida lectus, eget vehicula est. Vivamus tempus vitae dui ac dapibus. Nulla bibendum eleifend ultrices. Morbi efficitur tellus nisi, a congue magna molestie quis. Mauris ornare justo sapien, vitae sodales sem pulvinar ut. Aliquam ut pharetra justo. Quisque sit amet tortor vel massa mollis euismod et et sem. Cras facilisis nibh libero, non eleifend justo venenatis vel. Etiam tempus sem lacus, a sodales ante congue ac. Mauris ut dolor sit amet nibh aliquet dapibus. Praesent et tellus at libero commodo efficitur.",
-                        "http://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review.mp4"
-                )
-
-                listRowAdapter.add(movie)
-            }
+            MovieProvider.instance.getItems().forEach { listRowAdapter.add(it) }
             val headerItem = HeaderItem(0, "Related Videos")
 
             val classPresenterSelector = ClassPresenterSelector()
