@@ -10,4 +10,8 @@
     <style name="AppTheme.GuidedStep" parent="Theme.Leanback.GuidedStep">
         <item name="guidanceIconStyle">@style/Widget.Leanback.GuidanceIconStyle</item>
     </style>
+
+    <style name="AppTheme.SecondStepGuidanceIconStyle" parent="Widget.Leanback.GuidanceIconStyle">
+        <item name="android:padding">24dp</item>
+    </style>
 </resources>
