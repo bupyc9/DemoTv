@@ -13,6 +13,7 @@ import ru.bupyc9.demotv.model.Movie
 import ru.bupyc9.demotv.presenter.CardPresenter
 import ru.bupyc9.demotv.presenter.GridItemPresenter
 import ru.bupyc9.demotv.ui.detail.VideoDetailsFragment
+import ru.bupyc9.demotv.ui.guidedstep.GuidedStepActivity
 
 
 class MainFragment: BrowseFragment() {
@@ -57,7 +58,7 @@ class MainFragment: BrowseFragment() {
 
         gridRowAdapter.add("ITEM 1")
         gridRowAdapter.add("ITEM 2")
-        gridRowAdapter.add("ITEM 3")
+        gridRowAdapter.add("GuidedStepFragment")
         gridRowAdapter.add("ErrorMessage")
 
         mRowsAdapter.add(ListRow(gridItemPresenterHeader, gridRowAdapter))
@@ -101,6 +102,9 @@ class MainFragment: BrowseFragment() {
             } else if (item is String) {
                 if (item == "ErrorMessage") {
                     val intent = Intent(activity, ErrorActivity::class.java)
+                    startActivity(intent)
+                } else if (item == "GuidedStepFragment") {
+                    val intent = Intent(activity, GuidedStepActivity::class.java)
                     startActivity(intent)
                 }
             }
