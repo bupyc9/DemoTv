@@ -17,7 +17,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Leanback">
+        android:theme="@style/AppTheme">
         <activity android:name=".ui.browse.TvActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -30,6 +30,9 @@
         <activity android:name=".ui.error.ErrorActivity">
         </activity>
         <activity android:name=".ui.playback.PlaybackActivity">
+        </activity>
+        <activity android:name=".ui.guidedstep.GuidedStepActivity"
+                  android:theme="@style/AppTheme.GuidedStep">
         </activity>
     </application>
 
