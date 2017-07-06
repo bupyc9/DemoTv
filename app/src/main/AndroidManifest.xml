@@ -9,6 +9,7 @@
         android:name="android.hardware.touchscreen"
         android:required="false"/>
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -31,9 +32,18 @@
         </activity>
         <activity android:name=".ui.playback.PlaybackActivity">
         </activity>
-        <activity android:name=".ui.guidedstep.GuidedStepActivity"
-                  android:theme="@style/AppTheme.GuidedStep">
+        <activity
+            android:name=".ui.guidedstep.GuidedStepActivity"
+            android:theme="@style/AppTheme.GuidedStep">
         </activity>
+
+        <service android:name=".recommendation.UpdateRecommendationsService"/>
+
+        <receiver android:name=".recommendation.RecommendationReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
