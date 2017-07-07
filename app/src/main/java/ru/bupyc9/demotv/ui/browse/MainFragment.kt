@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v17.leanback.app.BrowseFragment
 import android.support.v17.leanback.widget.*
+import android.support.v4.content.ContextCompat
 import android.util.Log
+import android.view.View
 import ru.bupyc9.demotv.MovieProvider
 import ru.bupyc9.demotv.ui.error.ErrorActivity
 import ru.bupyc9.demotv.R
@@ -14,6 +16,7 @@ import ru.bupyc9.demotv.presenter.CardPresenter
 import ru.bupyc9.demotv.presenter.GridItemPresenter
 import ru.bupyc9.demotv.ui.detail.VideoDetailsFragment
 import ru.bupyc9.demotv.ui.guidedstep.GuidedStepActivity
+import ru.bupyc9.demotv.ui.search.SearchActivity
 
 
 class MainFragment: BrowseFragment() {
@@ -32,14 +35,19 @@ class MainFragment: BrowseFragment() {
         setupEventListeners()
 
         mSimpleBackgroundManager = SimpleBackgroundManager(activity)
+
+        setOnSearchClickedListener {
+            val intent = Intent(activity, SearchActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setUIElements() {
         title = getString(R.string.browse_title)
         headersState = HEADERS_ENABLED
         isHeadersTransitionOnBackEnabled = true
-        brandColor = resources.getColor(R.color.fastlane_background)
-        searchAffordanceColor = resources.getColor(R.color.search_opaque)
+        brandColor = ContextCompat.getColor(activity, R.color.fastlane_background)
+        searchAffordanceColor = ContextCompat.getColor(activity, R.color.search_opaque)
     }
 
     private fun loadRows() {

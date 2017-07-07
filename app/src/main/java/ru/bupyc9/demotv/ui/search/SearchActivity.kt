@@ -1,15 +1,16 @@
-package ru.bupyc9.demotv.ui.browse
+package ru.bupyc9.demotv.ui.search
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.FragmentActivity
-import ru.bupyc9.demotv.R
-import ru.bupyc9.demotv.ui.search.SearchActivity
 
-class TvActivity : FragmentActivity() {
+import ru.bupyc9.demotv.R
+
+class SearchActivity : Activity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_search)
     }
 
     override fun onSearchRequested(): Boolean {

@@ -1,6 +1,7 @@
 package ru.bupyc9.demotv
 
 import android.content.Context
+import android.content.pm.PackageManager
 import android.graphics.Point
 import android.view.WindowManager
 import android.widget.Toast
@@ -57,4 +58,8 @@ fun getDuration(videoUrl: String): Long {
     mediaMetadataRetriever.setDataSource(videoUrl, hashMapOf())
 
     return mediaMetadataRetriever.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION).toLong()
+}
+
+fun hasPermission(context: Context, permission: String): Boolean {
+    return PackageManager.PERMISSION_GRANTED == context.packageManager.checkPermission(permission, context.packageName)
 }
